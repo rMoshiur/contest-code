@@ -1,0 +1,42 @@
+\begin{problem}{Partial Tree}{standard input}{standard output}{1s}{rose red}
+
+In mathematics, and more specifically in graph theory, a tree is an undirected graph in which any two nodes are connected by exactly one path. In other words, any connected graph without simple cycles is a tree.
+
+You find a partial tree on the way home. This tree has $n$ nodes but lacks of $n-1$ edges.
+You want to complete this tree by adding $n-1$ edges.
+There must be exactly one path between any two nodes after adding.
+As you know, there are $n^{n-2}$ ways to complete this tree,
+and you want to make the completed tree as cool as possible.
+The coolness of a tree is the sum of coolness of its nodes.
+The coolness of a node is $f(d)$, where $f$ is a predefined function and $d$ is the degree of this node.
+What's the maximum coolness of the completed tree?
+
+\InputFile
+The first line contains an integer $T$ indicating the total number of test cases.
+Each test case starts with an integer $n$ in one line,
+then one line with $n - 1$ integers $f(1), f(2), \ldots, f(n-1)$.
+\begin{itemize}
+\item $1 \le T \le 2015$
+\item $2 \le n \le 2015$
+\item $0 \le f(i) \le 10000$
+\item There are at most $10$ test cases with $n > 100$.
+\end{itemize}
+
+\OutputFile
+For each test case, please output the maximum coolness of the completed tree in one line.
+
+\Example
+
+\begin{example}
+\exmp{
+2
+3
+2 1
+4
+5 1 4
+}{
+5
+19
+}%
+\end{example}
+\end{problem}

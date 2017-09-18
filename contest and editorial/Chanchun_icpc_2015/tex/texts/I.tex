@@ -1,0 +1,56 @@
+\begin{problem}{Chess Puzzle}{standard input}{standard output}{4s}{purple}
+
+Andrew is a puzzle lover, he is interested in creating interesting puzzles. One day he creates a new puzzle, following are the rules of the game:
+\begin{itemize}
+\item The game is played on a big chessboard, it has $n$ rows and $m$ columns. The coordination $(i,j)$ ($1 \le i \le n$ ,$1 \le j \le m$) indicates the square on $i$-th row and $j$-th column.
+\item There are two kinds of chesses, black chess and white chess in this game. Some of the chesses are putted on some squares at the initial of the game, and other squares are empty.
+\item The player has to put chesses on {\bf all} the empty squares. Both black and white chesses are sufficient enough to be putted on all the squares.
+\item After all the squares on chessboard are full of chess. Andrew begins to calculate the score that player gets. The score is calculated using the following algorithm - For every two squares $(x_1, y_1)$ and $(x_2,y_2)$, the player gets $1$ point if the following $3$ conditions are satisifed :
+\begin{itemize}
+\item There is a black chess on $(x_1, y_1)$.
+\item And a white chess on $(x_2, y_2)$.
+\item $|x_1 - x_2|=a$ and $|y_1 - y_2| = b$, which $a$ and $b$ are two constants defined by Andrew before the game starts.
+\end{itemize}
+\end{itemize}
+ 
+But Andrew is confused because he doesn't know what is the highest possiple score in the game. Can you help him find the best way to solve the puzzle?
+
+\InputFile
+The first line of input contains an integer $T$ indicating the total number of test cases.
+
+The first line of each test case has 4 integers $n, m, a, b$, indicating the number of rows, number of columns and two integers decided by Andrew.
+The $n$ lines that follow describe the puzzle, the $i$-th of these lines is a string with $m$ characters $c_{i,1}, c_{i,2},..., c_{i,m}$, which $c_{i,j}$ indicates the type of chess that putted on $(i,j)$ at the begin of game.
+Black chesses are represented by uppercase ('B'), white chesses by uppercase ('W'), and empty squares by period ('.').
+\begin{itemize}
+\item $1 \le T \le 1000$
+\item $1 \le n,m \le 100$
+\item $1 \le a \le n$, $1 \le b \le m$
+\item There are at most $20$ testcases with $n > 30$ or $m > 30$ 
+\end{itemize}
+
+\OutputFile
+For each test case, please output an integer in the first line indicating the highest score that player can get. Then following $n$ lines, each line with $m$ characters indicating the chess type on each square to get the higgest score. The output format is same as input format.
+
+Note that if there are mutiple ways to get the highest score, you should output the one with smallest lexicographical order in ASCII. ('B' is smaller than 'W')
+
+\Example
+
+\begin{example}
+\exmp{
+2
+2 2 1 1
+..
+..
+2 2 1 1
+.W
+.B
+}{
+2
+BB
+WW
+2
+WW
+BB
+}%
+\end{example}
+\end{problem}

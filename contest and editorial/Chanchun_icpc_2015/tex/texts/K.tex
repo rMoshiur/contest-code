@@ -1,0 +1,48 @@
+\begin{problem}{Maximum Spanning Forest}{standard input}{standard output}{7s}{brown}
+
+In graph theory, a {\bf maximum spanning tree} is a subgraph that is a tree and connects all the vertices with maximum weight sum. And a {\bf maximum spanning forest} is the union of maximum spanning trees of each connected component in the graph.
+
+A big undirected graph $G=(V,E)$ is given, which $V=\{(x,y) : 1 \le x,y \le 2,000,000,000;~x,y\in\mathbb{Z}\}$ and $E=\{\}$ initially. You're task is to write a program that support operation $x_1,y_1,x_2,y_2,c$:
+
+\begin{itemize}
+\item First, add some edges in $G$. You should add an edge between $(a_1, b_1)$ and $(a_2, b_2)$ with weight $c$ if $x_1 \le a_1,a_2 \le x_2$, $y_1 \le b_1, b_2 \le y_2$ and $|a_1 - a_2| + |b_1 - b_2| = 1$.
+\item Second, calculate the maximum spanning forest of $G$ after edges added.
+\end{itemize}
+
+\InputFile
+The first line of input contains an integer $T$ indicating the total number of test cases.
+
+The first line of each test case has an integers $n$, indicating the number of operations. The $n$ lines that follow describe the operations. Each of these lines has $5$ integers $x_1,y_1,x_2,y_2,c$, separated by a single space.
+
+Limitations:
+\begin{itemize}
+\item $1 \le T \le 500$
+\item $1 \le n \le 100$
+\item $1 \le x_1 \le x_2 \le 2,000,000,000$
+\item $1 \le y_1 \le y_2 \le 2,000,000,000$
+\item $1 \le c \le 1,000,000,000$
+\item There are at most $20$ testcases with $n > 50$.
+\end{itemize}
+
+\OutputFile
+For each operation, output a number in a line that indicates the weight of maximum spanning forest mod $10^9+7$.
+
+\Example
+
+\begin{example}
+\exmp{
+2
+3
+2 2 3 3 1
+1 2 2 3 2
+1 1 1 3 5
+1
+1 1 2000000000 2000000000 1000000000
+}{
+3
+8
+16
+999998642
+}%
+\end{example}
+\end{problem}

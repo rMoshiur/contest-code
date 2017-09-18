@@ -1,0 +1,43 @@
+\begin{problem}{Almost Sorted Array}{standard input}{standard output}{2s}{orange}
+
+We are all familiar with sorting algorithms:
+quick sort, merge sort, heap sort, insertion sort, selection sort, bubble sort, etc.
+But sometimes it is an overkill to use these algorithms for an almost sorted array.
+
+We say an array is sorted if its elements are in non-decreasing order or non-increasing order.
+We say an array is almost sorted if we can remove exactly one element from it,
+and the remaining array is sorted.
+Now you are given an array $a_1, a_2, \ldots, a_n$, is it almost sorted?
+
+\InputFile
+The first line contains an integer $T$ indicating the total number of test cases.
+Each test case starts with an integer $n$ in one line,
+then one line with $n$ integers $a_1, a_2, \ldots, a_n$.
+\begin{itemize}
+\item $1 \le T \le 2000$
+\item $2 \le n \le 10^5$
+\item $1 \le a_i \le 10^5$
+\item There are at most 20 test cases with $n > 1000$.
+\end{itemize}
+
+\OutputFile
+For each test case, please output "`YES`" if it is almost sorted. Otherwise, output "`NO`" (both without quotes).
+
+\Example
+
+\begin{example}
+\exmp{
+3
+3
+2 1 7
+3
+3 2 1
+5
+3 1 4 1 5
+}{
+YES
+YES
+NO
+}%
+\end{example}
+\end{problem}

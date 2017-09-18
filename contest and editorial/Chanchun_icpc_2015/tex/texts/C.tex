@@ -1,0 +1,84 @@
+\begin{problem}{Play a game}{standard input}{standard output}{2s}{dark green}
+
+Andy and Andrew are very smart guys and they like to play all kinds of games in their spare time.
+The most amazing thing is that they always find the best strategy, and that's why they feel bored again
+and again. They just invented a new game, as they usually did.
+
+At the beginning of the game, they write down one string $S=s_1s_2s_3\ldots s_k$, and then they take turns(Andy first) to either:
+
+\begin{itemize}
+\item 1. Erase the leftmost character from $S$, that is, $S=s_2s_3s_4\ldots s_k$. 
+\item 2. Erase the rightmost character from $S$, that is, $S=s_1s_2s_3\ldots s_{k-1}$. 
+\end{itemize}
+
+Whenever $S$ is empty or $S\in A$ ($A$ is a given list of strings), the player which plays next loses the game.
+
+For example, let $S=dzxx$ and $A=\{z,dz\}$. If Andy erases 'x' then Andrew can erase another 'x', 
+because $S=dz$ and $dz$ is in $A$, Andy, the next player, loses. 
+Otherwise, Andy erases 'd', and then Andrew can erase 'z' result in a losing position for Andy.
+
+You are given a string $T=t_1t_2t_3\ldots t_n$ and a list of string $A=\{a_1,a_2,\ldots,a_m\}$. 
+Your task is to find who is the winner if $S$ is some substring of $T$. 
+Andy and Andrew play so many times so you need to answer multiple queries.
+
+\InputFile
+The first line contains an integer $t$ indicating the total number of test cases.
+The following lines describe a test case.
+
+The first line of each case contains three integers $n$, $m$, $q$, 
+the length of $T$, the size of $A$, and the number of queries.
+The second line contains a string, representing $T$.
+Next $m$ lines, each line consists of a string, 
+representing $a_i$.
+Next $q$ lines, each line consists of two integers $l,r$, 
+representing a query that you should output who is the winner if $S=t_lt_{l+1}\ldots t_{r}$.
+
+\begin{itemize}
+\item $1 \le t \le 21$
+\item $1 \le n, q \le 40000$
+\item $1 \le m \le 10000$
+\item $1 \le \sum\limits_{i=1}^{m}|a_i| \le 10000$
+\item $1 \le l \le r \le n$
+\item $T$ and strings in $A$ consist of lowercase English letters.
+\item There are at most 6 test cases with $n>5000$.
+\end{itemize}
+
+\OutputFile
+For each query, if Andy wins, print "1" (without the quotes) on a single line, 
+otherwise print "0" (without the quotes) on a single line.
+
+\Example
+
+\begin{example}
+\exmp{
+1
+10 4 10
+zzzabcdzxx
+a
+z
+dz
+abcd
+1 3
+1 4
+3 6
+3 7
+3 8
+3 9
+4 4
+4 5
+5 5
+7 10
+}{
+0
+1
+1
+1
+0
+1
+0
+1
+1
+0
+}%
+\end{example}
+\end{problem}

@@ -1,0 +1,80 @@
+\begin{problem}{Count $a\times b$}{standard input}{standard output}{1s}{light blue}
+
+Marry likes to count the number of ways to choose two non-negative integers $a$ and $b$ less than $m$ to make $a\times b$ mod $m \neq 0$.
+
+Let's denote $f(m)$ as the number of ways to choose two non-negative integers $a$ and $b$ less than $m$ to make $a\times b$ mod $m \neq 0$.
+
+She has calculated a lot of $f(m)$ for different $m$, and now she is interested in another function $g(n)=\sum\limits_{m|n}f(m)$. For example, $g(6)=f(1)+f(2)+f(3)+f(6)=0+1+4+21=26$. She needs you to double check the answer.
+
+\begin{minipage}{0.18\linewidth}
+	\centering
+	\begin{tabular}{|c|c|}\hline
+	\backslashbox{a\kern-0.75em}{\kern-0.75em b}&0\\\hline
+	0&0\\\hline
+	\end{tabular}
+	\captionof{table}{$a\times b$ mod 1}
+\end{minipage}
+\hfill
+\begin{minipage}{0.18\linewidth}
+	\centering
+	\begin{tabular}{|c|c|c|}\hline
+	\backslashbox{a\kern-0.75em}{\kern-0.75em b}&0&1\\\hline
+	0&0&0\\\hline
+	1&0&1\\\hline
+	\end{tabular}
+	\captionof{table}{$a\times b$ mod 2}
+\end{minipage}
+\hfill
+\begin{minipage}{0.18\linewidth}
+	\centering
+	\begin{tabular}{|c|c|c|c|}\hline
+	\backslashbox{a\kern-0.75em}{\kern-0.75em b}&0&1&2\\\hline
+	0&0&0&0\\\hline
+	1&0&1&2\\\hline
+	2&0&2&1\\\hline
+	\end{tabular}
+	\captionof{table}{$a\times b$ mod 3}
+\end{minipage}
+\hfill
+\begin{minipage}{0.36\linewidth}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}\hline
+	\backslashbox{a\kern-0.75em}{\kern-0.75em b}&0&1&2&3&4&5\\\hline
+	0&0&0&0&0&0&0\\\hline
+	1&0&1&2&3&4&5\\\hline
+	2&0&2&4&0&2&4\\\hline
+	3&0&3&0&3&0&3\\\hline
+	4&0&4&2&0&4&2\\\hline
+	5&0&5&4&3&2&1\\\hline
+	\end{tabular}
+	\captionof{table}{$a\times b$ mod 6}
+\end{minipage}
+
+Give you $n$. Your task is to find $g(n)$ modulo $2^{64}$. 
+
+\InputFile
+The first line contains an integer $T$ indicating the total number of test cases.
+Each test case is a line with a positive integer $n$.
+
+\begin{itemize}
+\item $1 \le T \le 20000$
+\item $1 \le n \le 10^9$
+\end{itemize}
+
+\OutputFile
+For each test case, print one integer $s$, representing $g(n)$ modulo $2^{64}$. 
+
+\Example
+
+\begin{example}
+\exmp{
+2
+6
+514
+}{
+26
+328194
+}%
+\end{example}
+
+\end{problem}

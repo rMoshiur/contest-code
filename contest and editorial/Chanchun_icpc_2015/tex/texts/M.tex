@@ -1,0 +1,52 @@
+\begin{problem}{Security Corporation}{standard input}{standard output}{20s}{black}
+
+Due to the high crime rate of Bytecity, the new mayor has decided to employ security agents from $c$ different security corporations.
+As a first step, he'll arrange a security agent from any of the corporation at each intersection of two roads in Bytecity.
+
+The Bytecity has a very special and complex transportation system.
+There are $n$ straight and long roads in the city, each of them can be treated as an {\bf infinitely long line} on a two dimensional plane, and no $3$ or more roads have a common intersection.
+
+In order to prevent agents from slacking during work, the mayor has decided to arrange agents from two different security corporations at any two {\it adjacent intersections}.
+We said that two intersections are {\it adjacent} if they are on a same road, and there is no other intersection between these two intersections on that road.
+Also, the mayor thinks less number of security corporations is more manageable. Can you help the mayor to distribute all the intersections to as less security corporations as possible?
+
+\InputFile
+The first line of input contains an integer $T$ indicating the total number of test cases.
+The first line of each test case is an integer $n$, indicating the number of roads in Bytecity. The $n$ lines that follow describes roads in Bytecity, the $i$-th of these lines contains $4$ integers $x1_i, y1_i, x2_i, y2_i$, indicating road $i$ is a straight line through $(x1_i, y1_i)$, $(x2_i, y2_i)$ on the plane.
+\begin{itemize}
+\item $1 \le T \le 1000$.
+\item $2 \le n \le 1000$.
+\item $-10^3 \le x1_i, y1_i, x2_i, y2_i \le 10^3$.
+\item $(x1_i,y1_i) \neq (x2_i, y2_i)$.
+\item There are at most $10$ test cases with $n > 100$.
+\item There are no $2$ identical roads, and at least $1$ intersection exists in each test case.
+\end{itemize}
+
+\OutputFile
+For each test case, please output an integer $c$ in the first line indicating the minimum number of different corporations in your arrangement. Following $n-1$ lines, the $i$-th line of these lines should contain integers $a_{i,i+1}, a_{i,i+2}, ..., a_{i,n}$ in one line. The number $a_{i,j}$ indicates the security corporation that manages the intersection of road $i$ and road $j$, if the intersection does not exist, $a_{i,j}$ should be $-1$.
+
+Note that all the corporations should be numbered as an integer from $1$ to $c$, and any arrangement that satisfy the mayor's requirement would be accepted.
+
+\Example
+
+\begin{example}
+\exmp{
+2
+3
+0 0 1 0
+0 0 0 1
+1 0 0 1
+3
+0 0 1 0
+0 1 0 2
+1 0 1 1
+}{
+3
+1 2
+3
+2
+2 1
+-1
+}%
+\end{example}
+\end{problem}

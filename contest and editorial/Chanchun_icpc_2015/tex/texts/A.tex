@@ -1,0 +1,45 @@
+\begin{problem}{Too Rich}{standard input}{standard output}{3s}{pink}
+
+You are a rich person, and you think your wallet is too heavy and full now.
+So you want to give me some money by buying a lovely pusheen sticker which costs $p$ dollars from me.
+To make your wallet lighter, you decide to pay exactly $p$ dollars
+by as many coins and/or banknotes as possible.
+
+For example, if $p = 17$ and you have two \$10 coins, four \$5 coins, and eight \$1 coins,
+you will pay it by two \$5 coins and seven \$1 coins.
+But this task is incredibly hard since you are too rich and the sticker is too expensive and pusheen is too lovely, please write a program to calculate the best solution.
+
+\InputFile
+
+The first line contains an integer $T$ indicating the total number of test cases.
+Each test case is a line with 11 integers
+$p, c_1, c_5, c_{10}, c_{20}, c_{50}, c_{100}, c_{200}, c_{500}, c_{1000}, c_{2000}$,
+specifying the price of the pusheen sticker, and the number of coins and banknotes in each denomination.
+The number $c_i$ means how many coins/banknotes in denominations of $i$ dollars in your wallet.
+
+\begin{itemize}
+\item $1 \le T \le 20000$
+\item $0 \le p \le 10^9$
+\item $0 \le c_i \le 100000$
+\end{itemize}
+
+\OutputFile
+
+For each test case, please output the maximum number of coins and/or banknotes he can pay for exactly $p$ dollars in a line.
+If you cannot pay for exactly $p$ dollars, please simply output `-1`.
+
+\Example
+
+\begin{example}
+\exmp{
+3
+17 8 4 2 0 0 0 0 0 0 0
+100 99 0 0 0 0 0 0 0 0 0
+2015 9 8 7 6 5 4 3 2 1 0
+}{
+9
+-1
+36
+}%
+\end{example}
+\end{problem}

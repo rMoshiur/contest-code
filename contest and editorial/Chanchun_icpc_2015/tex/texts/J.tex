@@ -1,0 +1,41 @@
+\begin{problem}{Chip Factory}{standard input}{standard output}{9s}{dark blue}
+
+John is a manager of a CPU chip factory, the factory produces lots of chips everyday. To manage large amounts of products, every processor has a serial number. More specifically, the factory produces $n$ chips today, the $i$-th chip produced this day has a serial number $s_i$.
+
+At the end of the day, he packages all the chips produced this day, and send it to wholesalers. More specially, he writes a checksum number on the package, this checksum is defined as below:
+
+$$\max_{i,j,k} (s_i+s_j) \oplus s_k$$
+
+which $i,j,k$ are three {\bf different} integers between $1$ and $n$. And $\oplus$ is symbol of bitwise XOR.
+
+Can you help John calculate the checksum number of today?
+
+\InputFile
+The first line of input contains an integer $T$ indicating the total number of test cases.
+
+The first line of each test case is an integer $n$, indicating the number of chips produced today. The next line has $n$ integers $s_1, s_2, .., s_n$, separated with single space, indicating serial number of each chip.
+\begin{itemize}
+\item $1 \le T \le 1000$
+\item $3 \le n \le 1000$
+\item $0 \le s_i \le 10^9$
+\item There are at most $10$ testcases with $n > 100$ 
+\end{itemize}
+
+\OutputFile
+For each test case, please output an integer indicating the checksum number in a line.
+
+\Example
+
+\begin{example}
+\exmp{
+2
+3
+1 2 3
+3
+100 200 300
+}{
+6
+400
+}%
+\end{example}
+\end{problem}

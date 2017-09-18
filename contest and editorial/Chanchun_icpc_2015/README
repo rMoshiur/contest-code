@@ -1,0 +1,23 @@
+﻿1.Special Judge
+	編譯方法： g++ -std=gnu++0x M_check.cpp -o M_check
+	judge使用更改過的testlib以便支援PC^2的judge
+
+	使用方法1：M_check input_file user_output answer_file
+
+	使用方法2：M_check input_file user_output answer_file result_file
+	result_file為PC^2格式的result output
+
+	#special judge我目前是用浮點數judge節省裁判的時間
+	 我有另外寫有理數型態的比較兩份程式建出來的圖是否長得一樣
+	 在這份測試資料應該是不會誤判
+
+2.Validator
+	驗證測資格式的代碼
+	執行方法： A_validator < A.in
+
+3.時限：
+	標程在 solution_cpp\NTU 裡
+	10倍時限：AEGHIL
+	5倍時限：FKM
+	3倍時限：BCDJ
+
