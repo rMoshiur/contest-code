@@ -43,8 +43,8 @@ typedef struct touple
 
 
 // x = i, ~x = n+i //n is number of variable
-vector<int>edge[22222], sccEdge[22222], transEdge[22222], scctransEdge[22222], scclist[22222];
-int scc[22222], topsort[22222], vis[22222], c, sccNo, sign[22222], ans[11111];
+vector<int>edge[22222], transEdge[22222];
+int scc[22222], topsort[22222], vis[22222], c, sccNo, ans[22222], top[22222];
 
 
 void dfs1( int u )
@@ -58,7 +58,7 @@ void dfs1( int u )
             dfs1(v);
         }
     }
-    topsort[c++] = u;
+    top[c++] = u;
 }
 
 void dfs2( int u )
@@ -72,23 +72,10 @@ void dfs2( int u )
             dfs2(v);
         }
     }
-    scclist[sccNo].pb(u);
     scc[u] = sccNo;
-}
-
-void dfs3( int u )
-{
-    vis[u] = 1;
-    for( int i = 0; i < sccEdge[u].size(); i++ )
-    {
-        int v = sccEdge[u][i];
-        if( !vis[v] )
-        {
-            dfs3(v);
-        }
-    }
     topsort[c++] = u;
 }
+
 
 
 int main()
@@ -104,15 +91,13 @@ int main()
         sccNo = 1;
         memset(vis, 0, sizeof vis);
         memset( scc,0 , sizeof scc );
-        int m, n, a, b;
+        memset( ans, -1, sizeof ans );
+        int m, n, a, b, f = 1;
         cin >> m >> n;
         for( int i = 1; i <= 2*n; i++ )
         {
             edge[i].clear();
             transEdge[i].clear();
-            sccEdge[i].clear();
-            scctransEdge[i].clear();
-            scclist[i].clear();
         }
         for( int i = 0; i < m; i++ )
         {
@@ -154,104 +139,52 @@ int main()
         {
             if( !vis[i] )
             {
+                //what_is(i);
                 dfs1(i);
             }
         }
+        //what_is(c);
         /*for( int i = 1; i <= 2*n; i++ )
         {
             cout << topsort[i] << endl;
         }*/
         memset( vis, 0, sizeof vis );
-        for( int i = c-1; i >= 1; i-- )
+        c = 0;
+        for( int i = 2*n; i >= 1; i-- )
         {
-            if( !vis[topsort[i]])
+            //what_is( top[i] );
+            if( !vis[top[i]])
             {
-                //what_is(i);
-                dfs2( topsort[i] );
+                //what_is(topsort[i]);
+                dfs2( top[i] );
                 sccNo++;
             }
         }
-        /*for( int i = 1; i <= 2*n; i++ )
+
+        for( int i = 0; i < c; i++ )
         {
-            cout << scc[i] << endl;
-        }*/
-        int f = 1;
-        for( int i = 1; i <= n; i++ )
-        {
-            if( scc[i] == scc[i+n] )
+            //what_is(topsort[i]);
+            if( topsort[i] <= n && scc[ topsort[i] ] == scc[ topsort[i]+n ] )
             {
                 f = 0;
-                break;
+            }
+            else if( topsort[i] > n && ans[ topsort[i] ] == -1 )
+            {
+                //what_is( topsort[i] );
+                ans[ topsort[i] ] = 0;
+                ans[ topsort[i]-n ] = 1;
+            }
+            else if ( topsort[i] <= n && ans[ topsort[i] ] == -1 )
+            {
+                //cout << topsort[i] << "   tttt " << endl;
+                ans[ topsort[i] ] = 0;
+                ans[ topsort[i]+n ] = 1;
             }
         }
-        for( int i = 1; i <= 2*n && f == 1; i++ )
-        {
-            for( int j = 0; j < edge[i].size(); j++ )
-            {
-                int v = edge[i][j];
-                if( scc[i] != scc[v] )
-                {
-                    sccEdge[ scc[i] ].pb( scc[v] );
-                    scctransEdge[ scc[v] ].pb( scc[i] );
-                }
-            }
-        }
-        memset( vis, 0, sizeof vis );
-        c = 1;
-        //what_is( sccNo );
-        for( int i = 1; i < sccNo && f == 1; i++ )
-        {
-            if( !vis[i] )
-            {
-                //what_is(i);
-                dfs3(i);
-            }
-        }
-        //what_is(c);
-        /*for( int i = 1; i < c; i++ )
-        {
-            cout << topsort[i] << endl;
-        }
-        for( int i  =1; i < c; i++ )
-        {
-            for( int v: scclist[i] )
-            {
-                cout << v << " ";
-            }
-            cout << endl;
-        }*/
-        memset( sign, -1, sizeof sign );
-        for( int i = 1; i < c; i++ )
-        {
-            int u = topsort[i];
-            if( sign[u] == -1 ) sign[u] = 1;
-            for( int i = 0; i < scclist[u].size(); i++ )
-            {
-                int v = scclist[u][i];
-                if( v > n && sign[ scc[v-n] ] == -1 )
-                {
-                    sign[ scc[v-n] ] = !sign[u];
-                }
-            }
-            for( int i = 0; i < scctransEdge[u].size(); i++ )
-            {
-                int v = scctransEdge[u][i];
-                cout << u << " " << v << endl;
-                if( sign[v] == -1 )
-                {
-                    sign[v] = !sign[u];
-                }
-            }
-        }
-
         c = 0;
-        for( int i = 1; i <= n && f == 1; i++ )
+        for( int i = 1; i <= n; i++ )
         {
-            if( sign[ scc[i] ] == 1 )
-            {
-                //what_is(i);
-                ans[c++] = i;
-            }
+            c += ans[i];
         }
 
         if( f == 0 )
@@ -262,9 +195,10 @@ int main()
         {
             cout << "Case " << caseno++ << ": Yes" << endl;
             cout << c;
-            for( int i = 0; i < c; i++ )
+            for( int i = 1; i <= n; i++ )
             {
-                cout << " " << ans[i];
+                if( ans[i] )
+                    cout << " " << i;
             }
             cout << endl;
         }
